@@ -18,4 +18,9 @@ public class playerHealth : MonoBehaviour
         health = maxHealth - damageTaken;
     }
 
+    public void takedamage(int damage)
+    {
+        damageTaken += damage;
+    }
+
 }

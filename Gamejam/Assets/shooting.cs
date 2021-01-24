@@ -9,8 +9,11 @@ public class shooting : MonoBehaviour
     public float bulletForce;
     public int pelletcount = 5;
 
+    public playerHealth health;
+
     private void Update()
     {
+        pelletcount = health.health;
         if(Input.GetButtonDown("Fire1"))
         {
             shoot();
@@ -21,10 +24,10 @@ public class shooting : MonoBehaviour
     {
         for (int i = 0; i < pelletcount; i++)
         {
-            int u = Random.Range(0, firePoint.Length);
-            GameObject bullet = Instantiate(bulletPrefab, firePoint[u].position, firePoint[u].rotation);
+            
+            GameObject bullet = Instantiate(bulletPrefab, firePoint[i].position, firePoint[i].rotation);
             var rb = bullet.GetComponent<Rigidbody2D>();
-            rb.AddForce(firePoint[u].up * bulletForce, ForceMode2D.Impulse);
+            rb.AddForce(firePoint[i].up * bulletForce, ForceMode2D.Impulse);
         }
         
 
