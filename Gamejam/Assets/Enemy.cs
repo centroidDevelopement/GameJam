@@ -8,7 +8,11 @@ public class Enemy : MonoBehaviour
 
     public Transform target;
     public Transform gunRotationPoint;
-    
+
+    public GameObject bulletPrefab;
+    public Transform firePoint;
+
+    public float bulletForce;
 
 
     public void takeDamage(int damage)
@@ -19,6 +23,11 @@ public class Enemy : MonoBehaviour
     public void die()
     {
         Destroy(gameObject);
+    }
+
+    private void Start()
+    {
+        InvokeRepeating("shoot", 0, .5f);
     }
 
     private void Update()
@@ -33,5 +42,14 @@ public class Enemy : MonoBehaviour
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
 
         gunRotationPoint.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+
+
+    }
+
+    void shoot()
+    {
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        var rb = bullet.GetComponent<Rigidbody2D>();
+        rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
     }
 }

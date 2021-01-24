@@ -9,8 +9,11 @@ public class shooting : MonoBehaviour
     public float bulletForce;
     public int pelletcount = 5;
 
+    public playerHealth health;
+
     private void Update()
     {
+        pelletcount = health.health;
         if(Input.GetButtonDown("Fire1"))
         {
             shoot();

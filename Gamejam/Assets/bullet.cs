@@ -21,6 +21,13 @@ public class bullet : MonoBehaviour
             collision.gameObject.GetComponent<Enemy>().takeDamage(1);
         }
 
+        var player = collision.gameObject.GetComponent<playerHealth>();
+
+        if(player != null)
+        {
+            player.takedamage(1);
+        }
+
         Destroy(gameObject);
     }
 }
