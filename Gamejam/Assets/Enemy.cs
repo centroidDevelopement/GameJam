@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
 
     public float bulletForce;
 
+    public GameObject body;
+
 
     public void takeDamage(int damage)
     {
@@ -22,6 +24,7 @@ public class Enemy : MonoBehaviour
 
     public void die()
     {
+        Instantiate(body, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
