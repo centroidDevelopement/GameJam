@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 726391453730437880}
   - component: {fileID: 4718196184607582570}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8406052891271239917}
   - component: {fileID: 8406052891271239916}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wasteland objects_19
   m_TagString: Untagged
   m_Icon: {fileID: 0}

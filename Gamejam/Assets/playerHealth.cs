@@ -16,11 +16,18 @@ public class playerHealth : MonoBehaviour
     private void Update()
     {
         health = maxHealth - damageTaken;
+        if (health <= 0)
+            die();
     }
 
     public void takedamage(int damage)
     {
         damageTaken += damage;
+    }
+
+    void die()
+    {
+        
     }
 
 }
