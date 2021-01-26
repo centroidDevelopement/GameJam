@@ -20,11 +20,12 @@ public class EnemyAI : MonoBehaviour
     Seeker seeker;
     Rigidbody2D rb;
 
+    bool spottedPlayer = false;
+
     private void Start()
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-        InvokeRepeating("updatePath", 0, .5f);
     }
 
     void updatePath()
@@ -78,5 +79,24 @@ public class EnemyAI : MonoBehaviour
             enemyGfx.localScale = new Vector3(1f, 1f, 1f);
         }
 
+
+
+    }
+    bool t = true;
+    private void Update()
+    {
+        if(spottedPlayer && t)
+        {
+            InvokeRepeating("updatePath", 0, .5f);
+            t = false;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            spottedPlayer = true;
+        }
     }
 }
