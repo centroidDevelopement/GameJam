@@ -85,6 +85,9 @@ public class EnemyAI : MonoBehaviour
     bool t = true;
     private void Update()
     {
+        if (target == null)
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+
         if(spottedPlayer && t)
         {
             InvokeRepeating("updatePath", 0, .5f);

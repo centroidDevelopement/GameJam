@@ -10,13 +10,28 @@ public class shooting : MonoBehaviour
     public int pelletcount = 5;
 
     public playerHealth health;
+    public AudioSource sound;
+
+    public float FireDelay;
+
+    float timer;
 
     private void Update()
     {
+        timer -= Time.deltaTime;
+
+
+
         pelletcount = health.health;
         if(Input.GetButtonDown("Fire1"))
         {
-            shoot();
+            if(timer <= 0)
+            {
+                shoot();
+                timer = FireDelay;
+                sound.Play();
+            }
+            
         }
     }
 

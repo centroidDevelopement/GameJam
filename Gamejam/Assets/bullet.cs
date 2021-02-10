@@ -5,6 +5,7 @@ using UnityEngine;
 public class bullet : MonoBehaviour
 {
     public GameObject hitEffect;
+    public bool enemy;
 
     private void Start()
     {
@@ -16,14 +17,14 @@ public class bullet : MonoBehaviour
         var effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
         Destroy(effect, 5f);
         
-        if(collision.gameObject.GetComponent<Enemy>() != null)
+        if(collision.gameObject.GetComponent<Enemy>() != null && !enemy)
         {
             collision.gameObject.GetComponent<Enemy>().takeDamage(1);
         }
 
         var player = collision.gameObject.GetComponent<playerHealth>();
 
-        if(player != null)
+        if(player != null && enemy)
         {
             player.takedamage(1);
         }
